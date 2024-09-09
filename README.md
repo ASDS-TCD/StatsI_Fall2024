@@ -15,7 +15,7 @@ This is the first course in the quantitative methods sequence, which introduces 
 
 ## Instructors
 
-- [Jeffrey Ziegler](mailto:zieglerj@tcd.ie), *Office Hours*: T/Th 13:00-14:00 [Zoom](https://calendly.com/jeffreymziegler/pou-7003-oh)
+- [Jeffrey Ziegler](mailto:zieglerj@tcd.ie), *Office Hours*: W/Th 15:00-16:00 [Zoom](https://calendly.com/jeffreymziegler/pou-7003-oh)
 
 ## Teaching Fellows
 - [Trajche Panov](mailto:panovt@tcd.ie)
