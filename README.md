@@ -19,7 +19,7 @@ This is the first course in the quantitative methods sequence, which introduces 
 
 ## Teaching Fellows
 - [Trajche Panov](mailto:panovt@tcd.ie)
-- Yao (Sara) Han
+- [Yao (Sara) Han](mailto:HANY3@tcd.ie)
 
 ## Hardware and Software
 
