@@ -6,7 +6,7 @@
 getwd()
 
 # Set working directory 
-setwd("E:/TCD/courses/2024_2025Autumn/Applied StatsQuant Methods I_Fall 2024/2024/StatsI_Fall2024-main/tutorials/01")
+setwd("D:/TCD_courses/2024_2025Autumn/Applied StatsQuant Methods I_Fall 2024/tutorials/01")
 getwd()
 
 ### Data collection ----------
@@ -31,66 +31,24 @@ hist(df$income) # Distribution
 mean(df$income) # Central tendency, mean
 var(df$income) # Variability, variance
 sd(df$income) # Variability, standard deviation
-sd(df$income)/sqrt(length((df$income))) # Variability, standard **error**
+sd(df$income)/sqrt(length(df$income)) # Variability, standard **error**
 
 # Step by step
 df$income
-length((df$income))
-sqrt(length((df$income)))
+length(df$income)
+sqrt(length(df$income))
 sqrt(19)
-sd(df$income)/sqrt(length((df$income)))
+sd(df$income)/sqrt(length(df$income))
 
 ### Education ###
 hist(df$edu) # Distribution
 mean(df$edu) # Central tendency, mean
 var(df$edu) # Variability, variance
 sd(df$edu) # Variability, standard deviation
-sd(df$edu)/sqrt(length((df$edu))) # Variability, standard **error**
+sd(df$edu)/sqrt(length(df$edu)) # Variability, standard **error**
 
 # Get summary statistics for entire dataset
 summary(df)
-
-# Which kind of inferences can we make with regards to the population,
-# based on the sample data?
-mean(df$income) # Sample mean is estimate for population mean
-sd(df$income)/sqrt(length((df$income))) 
-# Standard **error** (Sample standard deviation adjusted by sample size)
-# is estimate for standard deviation of the sampling distribution
-
-# Why do we need standard error again? --> to calculate measures of
-# uncertainty for our point estimate (e.g., confidence intervals, and p-values)
-
-### 95% Confidence level ###
-# Definition: Point estimate +/- Margin of error, 
-# where margin of error is a multiple of the standard error
-
-# What do we need?
-mean(df$income) # Point estimate
-sd(df$income)/sqrt(length((df$income))) # Standard error
-
-# How to find the multiple?
-# Looking at the normal distribution, we see that 
-# 95% of observations lie within +/-1.96 (approximately 2)
-# standard errors of point estimate 
-
-# Lower bound
-upper_95 = (mean(df$income))+(1.96)*(sd(df$income)/sqrt(length((df$income))))
-
-# Upper bound
-lower_95 = (mean(df$income))-(1.96)*(sd(df$income)/sqrt(length((df$income))))
-
-# Print
-lower_95
-mean(df$income)
-upper_95
-
-# How to calculate 99% confidence intervals?
-
-### Histogram ###
-hist(df$income)
-abline(v=mean(df$income),col="black")
-abline(v=lower_95,col="black",lty="dashed")
-abline(v=upper_95,col="black",lty="dashed")
 
 
 ###Sampling###
@@ -129,16 +87,27 @@ sd(df$income)/sqrt(length((df$income))) # Standard error
 # 95% of observations lie within +/-1.96 (approximately 2)
 # standard errors of point estimate 
 
+
 # Lower bound
-upper_95 = (mean(df$income))+(1.96)*(sd(df$income)/sqrt(length((df$income))))
+lower_95 = (mean(df$income))-(1.96)*(sd(df$income)/sqrt(length(df$incomed)))
+
 
 # Upper bound
-lower_95 = (mean(df$income))-(1.96)*(sd(df$income)/sqrt(length((df$income))))
+upper_95 = (mean(df$income))+(1.96)*(sd(df$income)/sqrt(length(df$income)))
+
 
 # Print
 lower_95
 mean(df$income)
 upper_95
+
+
+### Histogram ###
+hist(df$income)
+abline(v=mean(df$income),col="black")
+abline(v=lower_95,col="black",lty="dashed")
+abline(v=upper_95,col="black",lty="dashed")
+
 
 # How to calculate 99% confidence intervals?
 
@@ -157,7 +126,6 @@ mean(x)
 sd(x)
 ## 1.000413
 
-rbinom(10, 1, p = 0.5)
 
 
 #For the standard normal distribution, find the area to the left of x = 1.96
@@ -175,22 +143,31 @@ qnorm(0.005) ## -2.575829
 qnorm(0.995) ## 2.575829
 
 
+# Lower bound
+lower_99 = (mean(df$income))-(2.58)*(sd(df$income)/sqrt(length((df$income))))
+
+
+# Upper bound
+upper_99 = (mean(df$income))+(2.58)*(sd(df$income)/sqrt(length((df$income))))
+
+
+# Print
+lower_99
+mean(df$income)
+upper_99
+
+
+
 n <- length(df$income)
+
 qt(0.025, n-1, lower.tail = T)
 ## -2.100922
-
-
-### Histogram ###
-hist(df$income)
-abline(v=mean(df$income),col="black")
-abline(v=lower_95,col="black",lty="dashed")
-abline(v=upper_95,col="black",lty="dashed")
 
 
 # Is there a relationship between education and income?
 
 ### Scatter plot ###
-plot(df$income,df$edu)
+plot(df$income, df$edu)
 plot(df$income,df$edu,
      col=df$cap+1) # Color over third variable (+1, because first color in R is white)
 
@@ -203,29 +180,10 @@ plot(df$edu,
      xlab="University level education (in years)",
      main="The Relationship between Education and Income")
 
-
 # Add legend
-legend(1000, 8, # x and y position of legend
+legend(0,3000, # x and y position of legend
        legend=c("Capital", "Non capital"),
        col=c("black","red"),
-       pch=1) # Marker type (1 is default)
+       pch=1,        # Marker type (1 is default)
+       cex = 0.5) 
 dev.off()
-
-
-
-
-
-## References and Acknowledgements
-
-### Hannah Frank 
-### Tom Louverse
-
-
-
-
-
-
-
-
-
-
