@@ -50,12 +50,14 @@ summary(df)
 # Some quick visualizations, to look at distribution
 hist(df$income,
      #breaks = 20,
-     main="Monthly net income",
-     xlab="Euro")
+     main = "Monthly net income",
+     xlab = "Euro")
 
-plot(density(df$incom),
-     main="Monthly net income",
-     xlab="Euro")
+
+plot(density(df$income),
+     main = "Monthly net income",
+     xlab = "Euro")
+
 
 # Which kind of inferences can we make with regards to the population,
 # based on the sample data?
@@ -106,6 +108,7 @@ upper_95_n <- qnorm(0.975,
                     mean = mean(df$income),
                     sd = (sd(df$incom)/sqrt(length(df$income))))
 
+
 # Step by step
 ?qnorm
 qnorm(0.025) # value for first 2.5%
@@ -117,6 +120,7 @@ qnorm(0.025, mean = 2, sd = 0.4) # Change mean and standard error
 lower_95_n
 mean(df$income)
 upper_95_n
+
 
 # How to calculate 99% confidence intervals?
 # When to use normal distribution and when to use t distribution?
@@ -133,6 +137,8 @@ upper_99_t <- mean(df$income)+(t_score)*(sd(df$income)/sqrt(length(df$income)))
 qt(0.005, df = length(df$income)-1) # critical value for first 0.5%
 qt(0.995, df = length(df$income)-1) # last 0.5%
 qt(0.005, df = length(df$income)-1, lower.tail = FALSE) # last 0.5%
+qt(0.005, df = length(df$income)-1, lower.tail = TRUE) # first 0.5%
+
 
 
 # Print
@@ -143,12 +149,14 @@ upper_99_t
 
 # Update Histogram 
 hist(df$income)
-abline(v=mean(df$income), col="black")
-abline(v=lower_95, col="black", lty="dashed")
-abline(v=upper_95, col="black", lty="dashed")
+abline(v = mean(df$income), col = "black")
+abline(v = lower_95, col="black", lty = "dashed")
+abline(v = upper_95, col="black", lty = "dashed")
+
+abline(v = lower_95, col="blue", lty = "dashed")
+abline(v = upper_95, col="red", lty = "dashed")
 
 # Is there a relationship between education and income?
-
 
 
 # Scatter plot 
@@ -167,7 +175,7 @@ plot(df$income, df$edu,
 
 
 # Improve visualization and save
-png(file="output/scatter_plot.png")
+png(file="scatter_plot.png")
 plot(df$edu,
      df$income,
      col=df$cap+1,
@@ -192,6 +200,7 @@ boxplot(df$income ~ df$cap,
         ylab="Euro",
         xlab="Place of residence",
         names=c("Non capital", "Capital"))
+
 
 # (c.) Significance test for a mean ------
 
@@ -227,11 +236,15 @@ df$cap
 df$cap==0 # Only consider cases with cap==0 
 df[df$cap==0, ] # Subsetting rows accordingly
 df[df$cap==0, ]$income # Access variable
+df$income[df$cap==0]
 mean(df[df$cap==0, ]$income) # Calculate mean
+mean(df[df$cap==1, ]$income) 
+
 
 # t-test
 t.test(df$income ~ df$cap, alternative = "two.sided")
 ?t.test
+
 
 # On average, do people earn more in the capital
 # compared to people who do not reside in the capital?
@@ -241,11 +254,6 @@ t.test(df$income ~ df$cap, alternative = "less")
 
 
 t.test(df$income ~ df$cap, alternative = "greater")
-
-
-
-
-
 
 
 
