@@ -126,7 +126,7 @@ Y_vs_Region <- ggplot(expenditure, aes(x = Region, y = Y)) +
        x = "Region", y = "Per Capita Expenditure")
 ggsave("Y_VS_Region.pdf",plot=Y_vs_Region,width=8,height=6,units="in")
 
-# Based on the plot, Region 1 (Northeast) has the highest average per capita expenditure on housing assistance.
+# Based on the plot, west region has the highest average per capita expenditure on housing assistance.
 
 #####################
 # Section3:Plot the relationship between Y and X1

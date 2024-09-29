@@ -82,10 +82,10 @@ A school counselor was curious about the average of IQ of the students in her sc
 
 \begin{enumerate}
 	\item Find a 90\% confidence interval for the average student IQ in the school.
-   \lstinputlisting[language=R, firstline=35, lastline=61]{PS01.R}  
+   \lstinputlisting[language=R, firstline=35, lastline=61]{PS01.J.L.R}  
 	\item Next, the school counselor was curious  whether  the average student IQ in her school is higher than the average IQ score (100) among all the schools in the country.\\ 
 	\noindent Using the same sample, conduct the appropriate hypothesis test with $\alpha=0.05$.
-		\lstinputlisting[language=R, firstline=64, lastline=82]{PS01.R}  
+		\lstinputlisting[language=R, firstline=64, lastline=82]{PS01.J.L.R}  
 \end{enumerate}
       The average IQ of students in her school is higher than the average IQ\\
 \newpage
@@ -110,7 +110,7 @@ A school counselor was curious about the average of IQ of the students in her sc
 \begin{itemize}
 \item
 Please plot the relationships among \emph{Y}, \emph{X1}, \emph{X2}, and \emph{X3}? What are the correlations among them (you just need to describe the graph and the relationships among them)?
-\lstinputlisting[language=R, firstline=88, lastline=119]{PS01.R}  
+\lstinputlisting[language=R, firstline=88, lastline=119]{PS01.J.L.R}  
 
 \begin{figure}[h!]\centering
 	\caption{\footnotesize scatter Matrix}
@@ -121,60 +121,60 @@ Please plot the relationships among \emph{Y}, \emph{X1}, \emph{X2}, and \emph{X3
  \begin{figure}[h!]\centering
 	\caption{\footnotesize Y X1}
 	\label{fig:3}
-	\includegraphics[width=.75\textwidth]{Y_vs_X1.pdf}
+	\includegraphics[width=.75\textwidth]{plot_Y_X1.pdf}
 \end{figure}
 
  \begin{figure}[h!]\centering
 	\caption{\footnotesize X2 Y}
 	\label{fig:5}
-	\includegraphics[width=.75\textwidth]{X2_Y.pdf}
+	\includegraphics[width=.75\textwidth]{plot_X2_Y.pdf}
 \end{figure}
 
 \begin{figure}[h!]\centering
 	\caption{\footnotesize X3 Y}
 	\label{fig:6}
-	\includegraphics[width=.75\textwidth]{X3_Y.pdf}
+	\includegraphics[width=.75\textwidth]{plot_X3_Y.pdf}
 \end{figure}
 
 \begin{figure}[h!]\centering
 	\caption{\footnotesize X1 X2}
 	\label{fig:7}
-	\includegraphics[width=.75\textwidth]{X1_X2.pdf}
+	\includegraphics[width=.75\textwidth]{plot_X1_X2.pdf}
 \end{figure}
 
 \begin{figure}[h!]\centering
 	\caption{\footnotesize X1 X3}
 	\label{fig:8}
-	\includegraphics[width=.75\textwidth]{X1_X3.pdf}
+	\includegraphics[width=.75\textwidth]{plot_X1_X3.pdf}
 \end{figure}
 
 \begin{figure}[h!]\centering
 	\caption{\footnotesize X2 X3}
 	\label{fig:9}
-	\includegraphics[width=.75\textwidth]{X2_X3.pdf}
+	\includegraphics[width=.75\textwidth]{plot_X2_X3.pdf}
 \end{figure}
 
 The scatter plots show a moderate positive relationship between per capita expenditure on housing assistance (Y) and each of the predictors: personal income (X1), financially insecure residents (X2), and urban population percentage (X3). This suggests that states with higher incomes, larger urban populations, and more financially vulnerable residents tend to spend more on addressing homelessness.\\
 
 Please plot the relationship between \emph{Y} and \emph{Region}? On average, which region has the highest per capita expenditure on housing assistance?
 \vspace{.2cm}
-\lstinputlisting[language=R, firstline=122, lastline=130]{PS01.R} 
+\lstinputlisting[language=R, firstline=122, lastline=130]{PS01.J.L.R} 
 
  \begin{figure}[h!]\centering
 	\caption{\footnotesize Y Region}
 	\label{fig:2}
-	\includegraphics[width=.75\textwidth]{Y_VS_Region.pdf}
+	\includegraphics[width=.75\textwidth]{plot_Y_Region.pdf}
 \end{figure}
 
 Please plot the relationship between \emph{Y} and \emph{X1}? Describe this graph and the relationship. Reproduce the above graph including one more variable \emph{Region} and display different regions with different types of symbols and colors.
 \vspace{.2cm}
-\lstinputlisting[language=R, firstline=132, lastline=150]{PS01.R} 
+\lstinputlisting[language=R, firstline=132, lastline=150]{PS01.J.L.R} 
 \end{itemize}
 
  \begin{figure}[h!]\centering
 	\caption{\footnotesize Y X1 Region}
 	\label{fig:4}
-	\includegraphics[width=.75\textwidth]{Y_X1_Region.pdf}
+	\includegraphics[width=.75\textwidth]{plot_Y_X1_Region.pdf}
 \end{figure}
 The scatter plot of Y (per capita expenditure on housing assistance), X1 (personal income), and Region shows a positive relationship between Y and X1, with higher-income states spending more on housing assistance. However, regional differences are clear, with the Northeast and West regions generally spending more at similar income levels compared to the South and North Central. This suggests that both personal income and regional factors play significant roles in determining housing assistance expenditures.\\
 

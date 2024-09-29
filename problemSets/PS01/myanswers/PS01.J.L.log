@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.19)  29 SEP 2024 14:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.19)  29 SEP 2024 19:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -905,75 +905,76 @@ File: lstlang3.sty 2024/02/21 1.10 listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 85.
- (./PS01.R
+
+(./PS01.J.L.R
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 3
 6.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/omlcmr.fd
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 36.
- [1
+
+[1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]) (./PS01
-.R)
+al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}])
+(./PS01.J.L.R)
 Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
-[2] (./PS01.R [3])
+[2] (./PS01.J.L.R [3])
 <scatter_Matrix.pdf, id=109, 578.16pt x 433.62pt>
 File: scatter_Matrix.pdf Graphic file (type pdf)
 <use scatter_Matrix.pdf>
 Package pdftex.def Info: scatter_Matrix.pdf  used on input line 118.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-<Y_vs_X1.pdf, id=110, 578.16pt x 433.62pt>
-File: Y_vs_X1.pdf Graphic file (type pdf)
-<use Y_vs_X1.pdf>
-Package pdftex.def Info: Y_vs_X1.pdf  used on input line 124.
+<plot_Y_X1.pdf, id=110, 578.16pt x 433.62pt>
+File: plot_Y_X1.pdf Graphic file (type pdf)
+<use plot_Y_X1.pdf>
+Package pdftex.def Info: plot_Y_X1.pdf  used on input line 124.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<X2_Y.pdf, id=111, 578.16pt x 433.62pt>
-File: X2_Y.pdf Graphic file (type pdf)
-<use X2_Y.pdf>
-Package pdftex.def Info: X2_Y.pdf  used on input line 130.
+<plot_X2_Y.pdf, id=111, 578.16pt x 433.62pt>
+File: plot_X2_Y.pdf Graphic file (type pdf)
+<use plot_X2_Y.pdf>
+Package pdftex.def Info: plot_X2_Y.pdf  used on input line 130.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<X3_Y.pdf, id=112, 578.16pt x 433.62pt>
-File: X3_Y.pdf Graphic file (type pdf)
-<use X3_Y.pdf>
-Package pdftex.def Info: X3_Y.pdf  used on input line 136.
+<plot_X3_Y.pdf, id=112, 578.16pt x 433.62pt>
+File: plot_X3_Y.pdf Graphic file (type pdf)
+<use plot_X3_Y.pdf>
+Package pdftex.def Info: plot_X3_Y.pdf  used on input line 136.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<X1_X2.pdf, id=113, 578.16pt x 433.62pt>
-File: X1_X2.pdf Graphic file (type pdf)
-<use X1_X2.pdf>
-Package pdftex.def Info: X1_X2.pdf  used on input line 142.
+<plot_X1_X2.pdf, id=113, 578.16pt x 433.62pt>
+File: plot_X1_X2.pdf Graphic file (type pdf)
+<use plot_X1_X2.pdf>
+Package pdftex.def Info: plot_X1_X2.pdf  used on input line 142.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<X1_X3.pdf, id=114, 578.16pt x 433.62pt>
-File: X1_X3.pdf Graphic file (type pdf)
-<use X1_X3.pdf>
-Package pdftex.def Info: X1_X3.pdf  used on input line 148.
+<plot_X1_X3.pdf, id=114, 578.16pt x 433.62pt>
+File: plot_X1_X3.pdf Graphic file (type pdf)
+<use plot_X1_X3.pdf>
+Package pdftex.def Info: plot_X1_X3.pdf  used on input line 148.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<X2_X3.pdf, id=115, 578.16pt x 433.62pt>
-File: X2_X3.pdf Graphic file (type pdf)
-<use X2_X3.pdf>
-Package pdftex.def Info: X2_X3.pdf  used on input line 154.
+<plot_X2_X3.pdf, id=115, 578.16pt x 433.62pt>
+File: plot_X2_X3.pdf Graphic file (type pdf)
+<use plot_X2_X3.pdf>
+Package pdftex.def Info: plot_X2_X3.pdf  used on input line 154.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -987,32 +988,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
 LaTeX Warning: Text page 5 contains only floats.
 
-[5 <./Y_vs_X1.pdf> <./X2_Y.pdf>]
+[5 <./plot_Y_X1.pdf> <./plot_X2_Y.pdf>]
 
 LaTeX Warning: Text page 6 contains only floats.
 
-[6 <./X3_Y.pdf> <./X1_X2.pdf>]
+[6 <./plot_X3_Y.pdf> <./plot_X1_X2.pdf>]
 
 LaTeX Warning: Text page 7 contains only floats.
 
-[7 <./X1_X3.pdf> <./X2_X3.pdf>] (./PS01.R)
-<Y_VS_Region.pdf, id=189, 578.16pt x 433.62pt>
-File: Y_VS_Region.pdf Graphic file (type pdf)
-<use Y_VS_Region.pdf>
-Package pdftex.def Info: Y_VS_Region.pdf  used on input line 166.
+[7 <./plot_X1_X3.pdf> <./plot_X2_X3.pdf>] (./PS01.J.L.R)
+<plot_Y_Region.pdf, id=189, 578.16pt x 433.62pt>
+File: plot_Y_Region.pdf Graphic file (type pdf)
+<use plot_Y_Region.pdf>
+Package pdftex.def Info: plot_Y_Region.pdf  used on input line 166.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
- (./PS01.R [8 <./Y_VS_Region.pdf>])
-<Y_X1_Region.pdf, id=218, 578.16pt x 433.62pt>
-File: Y_X1_Region.pdf Graphic file (type pdf)
-<use Y_X1_Region.pdf>
-Package pdftex.def Info: Y_X1_Region.pdf  used on input line 177.
+ (./PS01.J.L.R [8 <./plot_Y_Region.pdf>])
+<plot_Y_X1_Region.pdf, id=218, 578.16pt x 433.62pt>
+File: plot_Y_X1_Region.pdf Graphic file (type pdf)
+<use plot_Y_X1_Region.pdf>
+Package pdftex.def Info: plot_Y_X1_Region.pdf  used on input line 177.
 (pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
-[9 <./Y_X1_Region.pdf>] (./PS01.J.L.aux)
+[9 <./plot_Y_X1_Region.pdf>] (./PS01.J.L.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1021,8 +1022,8 @@ Package rerunfilecheck Info: File `PS01.J.L.out' has not changed.
 (rerunfilecheck)             Checksum: ABA353A2A891934D1C58900BE64569C5;78.
  ) 
 Here is how much of TeX's memory you used:
- 27392 strings out of 474116
- 476516 string characters out of 5743682
+ 27391 strings out of 474116
+ 476802 string characters out of 5743682
  2186187 words of memory out of 5000000
  49131 multiletter control sequences out of 15000+600000
  569162 words of font info for 82 fonts, out of 8000000 for 9000
@@ -1039,7 +1040,7 @@ l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local
 /texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/
 texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/te
 xlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on PS01.J.L.pdf (9 pages, 247923 bytes).
+Output written on PS01.J.L.pdf (9 pages, 247932 bytes).
 PDF statistics:
  318 PDF objects out of 1000 (max. 8388607)
  264 compressed objects within 3 object streams
