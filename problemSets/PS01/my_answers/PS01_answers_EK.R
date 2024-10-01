@@ -38,7 +38,7 @@ y <- c(105, 69, 86, 100, 82, 111, 104, 110, 87, 108, 87, 90, 94, 113, 112, 98, 8
 
 t.test(y, conf.level = 0.90, alternative = "two.sided")
 t.test(y, mu = 100, alternative = "greater")
-t.test(y, mu = 100)
+
 
 #####################
 # Problem 2
