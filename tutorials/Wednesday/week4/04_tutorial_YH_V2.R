@@ -1,5 +1,5 @@
 # Applied Statistical Analysis I/Quantitative Methods I      
-# Tutorial 4: Bivariate regression, inference & prediction                     
+# Tutorial 4: Bivariate regression, inference & prediction
 
 # remove objects
 rm(list=ls())
@@ -43,15 +43,19 @@ dm <- readRDS("movies_updated.rds")
 View(dm)
 
 # Dataframe subsetting: dm[rows, columns]
+unique(dm$genre)
+
 dm_s <- dm[dm$genre=="Comedy" |
-             dm$genre=="Drama"  |
-             dm$genre=="Documentary", ]
+           dm$genre=="Drama"  |
+           dm$genre=="Documentary", ]
+
 dm_s$genre <- droplevels(dm_s$genre)
 View(dm_s)
+head(dm_s$genre)
+unique(dm_s$genre)
 
 # Run Chi squared test
-chisq.test(dm_s$genre, 
-           dm_s$critics_rating)
+chisq.test(dm_s$genre, dm_s$critics_rating)
 
 # Check p-value
 sprintf("%.20f",1.097e-12)
@@ -70,9 +74,14 @@ chi_test <- chisq.test(dm_s$genre, dm_s$critics_rating)
 # List objects inside chi_test
 ls(chi_test)
 str(chi_test)
+
 chi_test$observed # f_o (observed frequencies)
 chi_test$expected # f_e (expected frequencies under the assumption of H0,
 # under the assumption that two variables are independent)
+
+# Residuals,
+# observed - expected
+
 
 # Pearson residuals, 
 # (observed - expected) / sqrt(expected)
@@ -90,6 +99,7 @@ chi_test$stdres
 addmargins(table(dm_s$genre, dm_s$critics_rating))
 
 (63-37.22973)/sqrt(37.22973*(1-87/444)*(1-190/444)) #6.227389
+
 
 # How can we interpret the standardized residuals? 
 
@@ -119,9 +129,9 @@ text(1.5, 3000, sprintf("Correlation=%s", round(cor(df$edu, df$income),4)))
 png(file="scatter_plot.png")
 plot(df$edu,
      df$income,
-     xlab="University level education (in years)",
-     ylab="Monthly net income (in Euro)",
-     main="The Relationship between education and income") 
+     xlab = "University level education (in years)",
+     ylab = "Monthly net income (in Euro)",
+     main = "The Relationship between education and income") 
 text(1.5, 3000, sprintf("Correlation=%s", round(cor(df$edu, df$income),4)))
 dev.off()
 
@@ -166,12 +176,13 @@ confint(model, level = 0.95)
 confint(model, level = 0.99)
 
 # Plot
-plot(x=df$edu, y=df$income) # Scatter plot
+plot(x = df$edu, y = df$income) # Scatter plot
 abline(model) # Add regression line
 
 # Step by step
-plot(x=df$edu, y=df$income) # Scatter plot
-abline(v=4)  # Either specify single value (v for vertical)
+plot(x = df$edu, y = df$income) # Scatter plot
+abline(v = 4)  # Either specify single value (v for vertical)
+abline(h = 1000)
 abline(976.16, 250.64) # Or intercept and slope
 abline(model) # Use intercept and slope in model object
 abline(model, col="red") # Change color
@@ -186,7 +197,8 @@ head(df)
 
 model$fitted.values
 
-1520 - (976.16 +  250.64 * 1) # error
+1520 - (976.16 +  250.64 * 1) # error 
+#293.2
 
 
 model$residuals
@@ -204,29 +216,29 @@ seq(min(df$edu), max(df$edu), by=1) # Specify a sequences for which
 newdata = data.frame(edu = seq(min(df$edu), max(df$edu), by=1))
 newdata
 
-predict(model, newdata=data.frame(edu = seq(min(df$edu), max(df$edu), by=1)))
-predict(model, newdata=data.frame(edu = c(0,1,2,3,4,5,6,7,8)))
+predict(model, newdata = data.frame(edu = seq(min(df$edu), max(df$edu), by=1)))
+predict(model, newdata = data.frame(edu = c(0,1,2,3,4,5,6,7,8)))
 
 # Add standard errors
-predict(model, newdata=data.frame(edu = c(0,1,2,3,4,5,6,7,8)), se.fit=TRUE)
+predict(model, newdata = data.frame(edu = c(0,1,2,3,4,5,6,7,8)), se.fit=TRUE)
 
 # Make predictions with **confidence intervals**
 # Predict an average response at any chosen value of x
-predict(model, newdata=data.frame(edu = c(0,1,2,3,4,5,6,7,8)), interval="confidence", level=0.95)
+predict(model, newdata = data.frame(edu = c(0,1,2,3,4,5,6,7,8)), interval="confidence", level=0.95)
 
 # Make predictions with **prediction intervals**
 # Predict an individual’s response at any chosen value of x 
-predict(model, newdata=data.frame(edu = c(0,1,2,3,4,5,6,7,8)), interval="prediction", level=0.95)
+predict(model, newdata = data.frame(edu = c(0,1,2,3,4,5,6,7,8)), interval="prediction", level=0.95)
 # more variability in individual responses --> wider intervals
 
 # Make predictions for x values not in data
-predict(model, newdata=data.frame(edu = mean(df$edu))) # Mean education
+predict(model, newdata = data.frame(edu = mean(df$edu))) # Mean education
 mean(df$edu)
 sort(unique(df$edu)) # Unique values of x
-predict(model, newdata=data.frame(edu = 9)) # **But don't extrapolate**
+predict(model, newdata = data.frame(edu = 9)) # **But don't extrapolate**
 
 # Plot predictions
-plot(x=df$edu, y=df$income) # Scatter plot
+plot(x = df$edu, y = df$income) # Scatter plot
 points(df$edu, model$fitted.values, # Add another scatter plot on top
        col="green")
 
@@ -234,7 +246,8 @@ points(df$edu, model$fitted.values, # Add another scatter plot on top
 # Adopted from: https://stackoverflow.com/questions/46459620/plotting-a-95-confidence-interval-for-a-lm-object
 
 # Save confidence intervals
-ci <- predict(model, newdata=data.frame(edu = seq(min(df$edu), max(df$edu),by=1)), interval="confidence", level=0.95)
+ci <- predict(model, newdata = data.frame(edu = seq(min(df$edu), max(df$edu),by=1)), 
+                     interval = "confidence", level=0.95)
 plot(df$edu, df$income) # Scatter plot
 abline(model) # Add regression line
 # Add lower bound
@@ -243,7 +256,8 @@ lines(seq(min(df$edu), max(df$edu),by=1), ci[, 2], col="gray")
 lines(seq(min(df$edu), max(df$edu),by=1), ci[, 3], col="gray")
 
 # Step by step
-ci <- predict(model, newdata=data.frame(edu = seq(min(df$edu), max(df$edu),by=1)), interval="confidence", level=0.95)
+ci <- predict(model, newdata=data.frame(edu = seq(min(df$edu), max(df$edu),by=1)), 
+                     interval="confidence", level=0.95)
 ci # Save confidence intervals in object
 # Dataframe subsetting: df[rows, columns]
 ci[, 2] # second column, lower bound, lwr
@@ -267,3 +281,8 @@ legend(0, 3100, # x and y position of legend
        pch = 1,
        cex = 0.6) 
 dev.off()
+
+
+
+
+
