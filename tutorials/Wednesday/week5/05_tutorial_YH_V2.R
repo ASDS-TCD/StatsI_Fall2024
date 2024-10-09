@@ -41,8 +41,6 @@ getwd()
 # Research questions: 
 # Is there a relationship between income and child mortality?
 
-# Install and load packages
-# Adopted from: https://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them
 ## "wbstats", "tidyverse", "ggplot2", "stargazer"
 
 
@@ -51,7 +49,8 @@ getwd()
 # What is an API?
 # https://medium.com/geekculture/a-beginners-guide-to-apis-9aa7b1b2e172
 
-# Load data from World Bank API
+# Load data from World Bank API 
+# require("wbstats")
 wb <- wb_data(country = c("AF","BRA","ITA","NGA","SWE","UGA"), 
               indicator = c("NY.GDP.PCAP.CD", # GDP per capita (current US$)
                      "SP.POP.TOTL", # Population, total 
@@ -71,7 +70,7 @@ write.csv(wb, "wb.csv")
 # https://www.statology.org/long-vs-wide-data/
 
 
-# Reshape data from wide to long (put colums in rows) #melt needs pkg reshape
+# Reshape data from wide to long (put colums in rows) #melt needs pkg reshape2
 wb_re <- melt(select(wb, iso2c, iso3c, country, date,   
                      NY.GDP.PCAP.CD, SE.SEC.ENRR, SH.DYN.MORT, SP.POP.TOTL),
                  id.vars = c("iso2c", "iso3c", "country", "date"),
@@ -84,6 +83,7 @@ tail(wb_re)
 #       iso2c iso3c country date indicatorID value
 # 571    UG   UGA  Uganda 2018 SP.POP.TOTL 41515395
 # 572    UG   UGA  Uganda 2019 SP.POP.TOTL 42949080
+
 
 colnames(wb)[5:8] <- c("value.GDPPC", "value.SEC", 
                        "value.MORT", "value.POP")
@@ -112,8 +112,9 @@ head(wb_wide)
 
 
 # Load Quality of Government data
-qog <- read_csv("https://www.qogdata.pol.gu.se/data/qog_bas_ts_jan23.csv")
+qog <- read.csv("https://www.qogdata.pol.gu.se/data/qog_bas_ts_jan23.csv")
 write.csv(qog, "qog.csv")
+qog <- read.csv("qog.csv")
 
 names(qog)
 head(qog[, c("year", "ccodealp", "bmr_dem")])
@@ -149,7 +150,7 @@ write.csv(df, "df_income_mortality.csv")
 # (b.) Data wrangling -------
 
 # Load df
-df <- read_csv("df_income_mortality.csv")
+df <- read.csv("df_income_mortality.csv")
 View(df)
 
 # Get unique countries in df
@@ -179,20 +180,25 @@ df_mean_inc
 # Check if df has missing values
 sum(is.na(df$gdp_per_cap))
 sum(is.na(df$mort))
+df$gdp_per_cap
 
 # Replace missing values 
 
 # Option I: Replace missing values with zero, but be careful!
 df_na <- df %>% replace(is.na(.), 0)
+df_na$gdp_per_cap
 
 # Option II: Replace missing values with mean
 df_na <- df # Copy
+df_na$gdp_per_cap
 ?replace_na
 df_na$gdp_per_cap <- replace_na(data=df_na$gdp_per_cap, 
                                 replace=mean(df_na$gdp_per_cap, # Value to replace NA with
                                              na.rm = TRUE))
 # Step by step: 
 mean(df_na$gdp_per_cap, na.rm = TRUE)
+
+df_na$gdp_per_cap
 
 # Option III: Replace missing values with group mean
 df_na <- group_by(df_na, country) # Group
@@ -208,36 +214,56 @@ tail(df_na)
 # --> if is.na is True, replace with mean,
 # if is.na is False, replace with value
 
+df_na$sec_enrol = ifelse(is.na(df_na$sec_enrol), 
+                   mean(df_na$sec_enrol, na.rm = TRUE), 
+                   df$sec_enrol)
+
 # Re-coding variables, in Base R
 # Create categorical income variable
-df_na$income_cat <- 0 # Create empty variable
+df_na$income_group <- 0 # Create empty variable
 summary(df_na$gdp_per_cap) # Check quantile
-df_na$income_cat[df_na$gdp_per_cap > 756.8] <- 1 # Place step by step
-df_na$income_cat[df_na$gdp_per_cap > 3171.6] <- 2
-df_na$income_cat[df_na$gdp_per_cap > 31768.3] <- 3
+df_na$income_group[df_na$gdp_per_cap > 756.8] <- 1 # Place step by step
+df_na$income_group[df_na$gdp_per_cap > 3171.6] <- 2
+df_na$income_group[df_na$gdp_per_cap > 31768.3] <- 3
 
 # Convert into factor
-typeof(df_na$income_cat)
-df_na$income_cat <- factor(df_na$income_cat, 
+typeof(df_na$income_group)
+df_na$income_group <- factor(df_na$income_group, 
                            levels = c("low","medium_low","medium_high","high"))
+
+typeof(df_na$income_group)
 
 # Re-coding variables, in tidyverse
 # Create categorical income variable
 quantile(df_na$gdp_per_cap) # Check quantiles
-df_na <- df_na # Copy
-df_na <- mutate(df_na, income_cat2 = cut(gdp_per_cap, 
+df_na <- mutate(df_na, income_group2 = cut(gdp_per_cap, 
                                        breaks = quantile(df_na$gdp_per_cap),
                                        labels = c("low","medium_low","medium_high","high")))
-typeof(df_na$income_cat)
+
+typeof(df_na$income_group2)
+
+summary(df_na$income_group2)
+
+df_na[is.na(df_na$income_group2) == TRUE, ]
+
+df_na$income_group2[is.na(df_na$income_group2) == TRUE] <- "low"
+
+summary(df_na$income_group2)
 
 # Step by step: 
 cut(df_na$gdp_per_cap, breaks = c(0, 600, 800, Inf)) # Define breaks
+quantile(df_na$gdp_per_cap)
 cut(df_na$gdp_per_cap, breaks = quantile(df_na$gdp_per_cap)) # Use quantiles as breaks
+head(df_na$gdp_per_cap)
 cut(df_na$gdp_per_cap, breaks = quantile(df_na$gdp_per_cap),
                       labels=c("low","medium_low","medium_high","high")) # Add labels
+df_na$income_group2[df_na$gdp_per_cap == min(df_na$gdp_per_cap)] <- "low"
+
+summary(df_na$income_group2)
 
 # Drop missing values 
 df <- df[complete.cases(df), ]
+
 
 # (c.) Descriptive analysis -------
 
