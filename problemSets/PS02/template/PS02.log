@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.19)  13 OCT 2024 15:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.19)  11 OCT 2024 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**PS01.J.L.tex
-(./PS01.J.L.tex
+**PS02.tex
+(./PS02.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -826,8 +826,8 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count340
 \l__pdf_internal_box=\box76
 )
-(./PS01.J.L.aux)
-\openout1 = `PS01.J.L.aux'.
+(./PS02.aux)
+\openout1 = `PS02.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
 LaTeX Font Info:    ... okay on input line 67.
@@ -884,17 +884,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package xypdf Info: Line width: 0.47998pt on input line 67.
 Package hyperref Info: Link coloring OFF on input line 67.
- (./PS01.J.L.out) (./PS01.J.L.out)
+ (./PS02.out)
+(./PS02.out)
 \@outlinefile=\write7
-\openout7 = `PS01.J.L.out'.
+\openout7 = `PS02.out'.
 
 \c@lstlisting=\count347
+ [1
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
-
- []
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
+al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (/usr/lo
+cal/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/02/21 1.10 listings language file
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -903,147 +903,27 @@ File: lstlang2.sty 2024/02/21 1.10 listings language file
 (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2024/02/21 1.10 listings language file
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 85.
 
-(./PS01.J.L.R
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 3
-6.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 36.
+! Package Listings Error: File `ps02(.r)' not found.
 
-[1
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: r)
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}])
-(./PS01.J.L.R)
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.100 ...uage=R, firstline=2, lastline=45]{ps02.r}
+                                                  ^^M
+*** (cannot \read from terminal in nonstop modes)
 
- []
-
-[2] (./PS01.J.L.R [3])
-<scatter_Matrix.pdf, id=109, 578.16pt x 433.62pt>
-File: scatter_Matrix.pdf Graphic file (type pdf)
-<use scatter_Matrix.pdf>
-Package pdftex.def Info: scatter_Matrix.pdf  used on input line 118.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-<plot_Y_X1.pdf, id=110, 578.16pt x 433.62pt>
-File: plot_Y_X1.pdf Graphic file (type pdf)
-<use plot_Y_X1.pdf>
-Package pdftex.def Info: plot_Y_X1.pdf  used on input line 124.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<plot_X2_Y.pdf, id=111, 578.16pt x 433.62pt>
-File: plot_X2_Y.pdf Graphic file (type pdf)
-<use plot_X2_Y.pdf>
-Package pdftex.def Info: plot_X2_Y.pdf  used on input line 130.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<plot_X3_Y.pdf, id=112, 578.16pt x 433.62pt>
-File: plot_X3_Y.pdf Graphic file (type pdf)
-<use plot_X3_Y.pdf>
-Package pdftex.def Info: plot_X3_Y.pdf  used on input line 136.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<plot_X1_X2.pdf, id=113, 578.16pt x 433.62pt>
-File: plot_X1_X2.pdf Graphic file (type pdf)
-<use plot_X1_X2.pdf>
-Package pdftex.def Info: plot_X1_X2.pdf  used on input line 142.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<plot_X1_X3.pdf, id=114, 578.16pt x 433.62pt>
-File: plot_X1_X3.pdf Graphic file (type pdf)
-<use plot_X1_X3.pdf>
-Package pdftex.def Info: plot_X1_X3.pdf  used on input line 148.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<plot_X2_X3.pdf, id=115, 578.16pt x 433.62pt>
-File: plot_X2_X3.pdf Graphic file (type pdf)
-<use plot_X2_X3.pdf>
-Package pdftex.def Info: plot_X2_X3.pdf  used on input line 154.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
-
- []
-
-[4 <./scatter_Matrix.pdf>]
-
-LaTeX Warning: Text page 5 contains only floats.
-
-[5 <./plot_Y_X1.pdf> <./plot_X2_Y.pdf>]
-
-LaTeX Warning: Text page 6 contains only floats.
-
-[6 <./plot_X3_Y.pdf> <./plot_X1_X2.pdf>]
-
-LaTeX Warning: Text page 7 contains only floats.
-
-[7 <./plot_X1_X3.pdf> <./plot_X2_X3.pdf>] (./PS01.J.L.R)
-<plot_Y_Region.pdf, id=189, 578.16pt x 433.62pt>
-File: plot_Y_Region.pdf Graphic file (type pdf)
-<use plot_Y_Region.pdf>
-Package pdftex.def Info: plot_Y_Region.pdf  used on input line 166.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
- (./PS01.J.L.R [8 <./plot_Y_Region.pdf>])
-<plot_Y_X1_Region.pdf, id=218, 578.16pt x 433.62pt>
-File: plot_Y_X1_Region.pdf Graphic file (type pdf)
-<use plot_Y_X1_Region.pdf>
-Package pdftex.def Info: plot_Y_X1_Region.pdf  used on input line 177.
-(pdftex.def)             Requested size: 352.31625pt x 264.23654pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
-
- []
-
-[9 <./plot_Y_X1_Region.pdf>] (./PS01.J.L.aux)
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
- ***********
-Package rerunfilecheck Info: File `PS01.J.L.out' has not changed.
-(rerunfilecheck)             Checksum: ABA353A2A891934D1C58900BE64569C5;78.
- ) 
+ 
 Here is how much of TeX's memory you used:
- 27391 strings out of 474116
- 476802 string characters out of 5743682
- 2186187 words of memory out of 5000000
- 49131 multiletter control sequences out of 15000+600000
- 569162 words of font info for 82 fonts, out of 8000000 for 9000
+ 26153 strings out of 474116
+ 462964 string characters out of 5743682
+ 1935187 words of memory out of 5000000
+ 48037 multiletter control sequences out of 15000+600000
+ 569164 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,6n,93p,3240b,2823s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on PS01.J.L.pdf (9 pages, 247932 bytes).
-PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 264 compressed objects within 3 object streams
- 132 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 84i,8n,93p,3236b,442s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
