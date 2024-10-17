@@ -1,0 +1,389 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{adjustbox}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\usepackage{enumitem}
+
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Answer Key: Problem Set 2}
+\date{Jeffrey Ziegler}
+\author{Applied Stats/Quant Methods 1}
+
+\begin{document}
+	\maketitle
+	
+	\section*{Instructions}
+	\begin{itemize}
+	\item \textit{Please show your work! You may lose points by simply writing in the answer. If the problem requires you to execute commands in \texttt{R}, please include the code you used to get your answers. Please also include the \texttt{.R} file that contains your code. If you are not sure if work needs to be shown for a particular problem, please ask.}
+	\item \textit{Your homework should be submitted electronically on GitHub.}
+	\item \textit{This problem set is due before 23:59 on Monday October 14, 2024. No late assignments will be accepted.}
+	\end{itemize}
+	
+	\vspace{.5cm}
+	\section*{Question 1 (40 points): Political Science}
+		\vspace{.25cm}
+\textit{The following table was created using the data from a study run in a major Latin American city.\footnote{Fried, Brian J, Paul Lagunes, and Atheendar Venkataramani. 2010. "Corruption and Inequality at the Crossroad: A Multimethod Study of Bribery and Discrimination in Latin America". \textit{Latin American Research Review}. 45 (1): 76-97.} As part of the study, confederate made illegal left turns across traffic to draw the attention of the police officers.  Two of the confederates were upper class drivers and two were lower class drivers.  The researchers were interested in whether officers were more or less likely to solicit a bribe from drivers depending on their class (officers use phrases like, ``We can solve this the easy way'' to draw a bribe).  The table below shows the resulting data.}
+
+\begin{table}[h!]
+	\centering
+	\begin{adjustbox}{max width=.75\textwidth}
+		\begin{tabular}{l | c c c }
+			& Not Stopped & Bribe requested & Stopped/given warning \\
+			\\[-1.8ex] 
+			\hline \\[-1.8ex]
+			Upper class & 14 & 6 & 7 \\
+			Lower class & 7 & 7 & 1 \\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+\begin{enumerate}
+	
+	\newpage
+	\item [(a)]
+	\textit{Calculate the $\chi^2$ test statistic by hand (even better if you can do "by hand" in \texttt{R}).}\\
+	
+	
+	$$\text{Expected} =\frac{\sum_{\text{Row}}*\sum_{\text{Column}}}{\sum_{\text{N}}}$$
+	$$\chi^2 = \sum_N \frac{\text{Observed}_i - \text{Expected}_i}{\text{Expected}_i}$$
+	
+	Let's first try by ourselves:		
+	
+	\lstinputlisting[language=R, firstline=40, lastline=77]{PS2_answerKey.R}  
+	\footnotesize
+	\begin{verbatim}
+$statistic
+[1] 3.791168
+
+$df
+[1] 2
+
+$p.value
+[1] 0.1502306
+
+$observed
+            Not_Stopped Bribe_Requested Stopped_Given_Warning
+Upper_Class          14               6                     7
+Lower_Class           7               7                     1
+
+$expected
+            Not_Stopped Bribe_Requested Stopped_Given_Warning
+Upper_Class        13.5        8.357143              5.142857
+Lower_Class         7.5        4.642857              2.857143
+
+$adj_res
+            Not_Stopped Bribe_Requested Stopped_Given_Warning
+Upper_Class   0.3220306      -1.5164259             1.6491029
+Lower_Class  -0.2740361       1.9295276            -1.5230259
+
+$std_res
+            Not_Stopped Bribe_Requested Stopped_Given_Warning
+Upper_Class   0.3220306      -1.6419565             1.5230259
+Lower_Class  -0.3220306       1.6419565            -1.5230259
+	\end{verbatim}
+	\normalsize
+	Now we can check to make sure:
+	
+	\lstinputlisting[language=R, firstline=79, lastline=80]{PS2_answerKey.R}  
+	\footnotesize
+	\begin{verbatim}
+	Pearson's Chi-squared test
+	
+	data:trafficViolations
+	X-squared=3.7912, df=2, p-value=0.1502
+	\end{verbatim}
+	\normalsize
+	\item [(b)]
+	\textit{Now calculate the p-value (in \texttt{R}).\footnote{Remember frequency should be $>$ 5 for all cells, but let's calculate the p-value here anyway.}  What do you conclude if $\alpha = .1$?}\\
+	
+	\texttt{pchisq(3.79, df = (2-1)*(3-1), lower.tail = FALSE)} = 0.1502306\\
+
+	P-value checks out to our "hand" calculation and the built in function. Cannot reject the null that the two variables of interest are independent.\\
+	
+			\vspace{.25cm}
+	\item [(c)] \textit{Calculate the standardized residuals for each cell and put them in the table below.}\\
+	
+			\vspace{.15cm}
+	We can do this by hand (see above function), or the standardized residuals are stored in the \texttt{chisq.test} object. We're reporting the standardized residuals, \texttt{(observed - expected) / sqrt(V)}, where $V$ is the residual cell variance (Agresti, 2007, section 2.4.5 for the case where $x$ is a matrix, $n * p * (1 - p)$ otherwise).\\
+
+	\lstinputlisting[language=R, firstline=82, lastline=83]{PS2_answerKey.R}  
+	
+	
+	\vspace{.25cm}
+	\begin{table}[h!]
+		\centering
+		\begin{adjustbox}{max width=.75\textwidth}
+			\begin{tabular}{l | c c c }
+				& Not Stopped & Bribe requested & Stopped/given warning \\
+				\\[-1.8ex] 
+				\hline \\[-1.8ex]
+				Upper class  & 0.322 & -1.642 & 1.523 \\
+				\\
+				Lower class & -0.322 & 1.642  & -1.523  \\
+				
+			\end{tabular}
+		\end{adjustbox}
+	\end{table}
+	
+		\vspace{.5cm}
+	\item [(d)] \textit{How might the standardized residuals help you interpret the results?}  \\
+	
+			\vspace{.15cm}
+	From the frequency table, it is already clear that there is no obvious pattern for a relationship between rows and columns. Further, the standardized residuals turn out to be quite small, which only supports us to be more confident about the lack of the dependency relationship. None of the standardized residuals indicate any of the cells are more or less than we would expect if the two variables were independent. Nevertheless, they do not tell us much, we need the chi-squared test to make conclusions in either case, i.e. whether variables are dependent or not.
+	
+\end{enumerate}
+
+\newpage
+
+\section*{Question 2 (20 points): Economics}
+\textit{Chattopadhyay and Duflo were interested in studying the causal effect of having female politicians on policy outcomes.\footnote{Raghabendra Chattopadhyay and Esther Duflo. (2004). ``Women as Policy Makers: Evidence from a Randomized Policy Experiment in India. Econometrica, Vol. 72, No. 5, pp. 1409-1443.} Do women promote different policies than men? Answering this question with observational data is pretty difficult due to potential confounding problems (e.g. the districts that choose female politicians are likely to systematically differ in other aspects too). Hence, they exploit a randomized policy experiment in India, where since the mid-1990s, $\frac{1}{3}$ of village council heads have been {\bf{randomly}} reserved for women. A subset of the data from West Bengal can be found at the following link: \url{https://raw.githubusercontent.com/kosukeimai/qss/master/PREDICTION/women.csv}}\\
+
+\noindent \textit{Each observation in the data set represents a village and there are two villages associated with one GP (i.e. a level of government is called "GP"). Figure~\ref{fig:women_desc} below shows the names and descriptions of the variables in the ``women.csv" dataset. The authors hypothesize that female politicians are more likely to support policies female voters want. Researchers found that more women complain about the quality of drinking water than men. You will be asked to estimate the effect of the reservation policy on the number of new or repaired drinking water facilities in the villages.}
+\vspace{.5cm}
+\begin{figure}[h!]
+	\caption{\footnotesize{Names and description of variables from Chattopadhyay and Duflo (2004).}}
+	\centering
+	\label{fig:women_desc}
+	\includegraphics[width=1.1\textwidth]{../../../../graphics/women_desc.png}
+\end{figure}		
+\newpage
+\begin{enumerate}
+	\item [(a)] \textit{State a null and alternative (two-tailed) hypothesis. }
+	
+	Null: Having reserved seats for female politicians does not change the number drinking water facilities in the villages.\\
+	
+	Alternative: The reservation policy has an effect on policy outcomes.
+	
+	$$H_0: \beta = 0$$
+	$$H_A: \beta \neq 0$$
+%	\vspace{.05cm}
+	
+	\item [(b)] \textit{Run a bivariate regression to test this hypothesis in \texttt{R} (include your code!).}\\
+	
+					\vspace{.15cm}
+	After we load our dataset into our working environment, we execute our regression model in which the number of new or repaired water facilities is explained by whether there are reserved seats for female leaders. We then investigate the estimated coefficients of the model using \texttt{summary()}.\\
+	
+					\vspace{.15cm}
+	\lstinputlisting[language=R, firstline=89, lastline=94]{PS2_answerKey.R}  
+	\begin{footnotesize}
+		
+		\begin{verbatim}
+	Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   14.738      2.286   6.446 4.22e-10 ***
+reserved       9.252      3.948   2.344   0.0197 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Residual standard error: 33.45 on 320 degrees of freedom
+Multiple R-squared:  0.01688,	Adjusted R-squared:  0.0138 
+F-statistic: 5.493 on 1 and 320 DF,  p-value: 0.0197
+		\end{verbatim}
+	\end{footnotesize}
+	\item [(c)] \textit{Interpret the coefficient estimate for reservation policy.} 
+	
+				\vspace{.25cm}
+	
+	Having reserved seats for female politicians increase the number drinking water facilities in the villages, by 9.2 units. The estimated coefficient is statistically differentiable from zero at the $\alpha=0.05$ level because the p-value $<$ 0.05 ($\approx $0.02).
+\end{enumerate}
+%
+%\newpage
+%	\section*{Question 3 (40 points): Biology}
+%
+%\emph{There is a physiological cost of reproduction for fruit flies, such that it reduces the lifespan of female fruit flies.  Is there a similar cost to male fruit flies?  This dataset contains observations from five groups of 25 male fruit flies. The experiment tests if increased reproduction reduces longevity for male fruit flies. The five groups are: males forced to live alone, males assigned to live with one or eight newly pregnant females (non-receptive females), and males assigned to live with one or eight virgin females (interested females). The name of the data set is \texttt{fruitfly.csv}.\footnote{Partridge and Farquhar (1981).``Sexual Activity and the Lifespan of Male Fruitflies''. \textit{Nature}. 294, 580-581.}}
+%	\vspace{1cm}
+%
+%\begin{tabular}{r|l}
+%	\texttt{No} & serial number (1-25) within each group of 25\\
+%	\texttt{type} & Type of experimental assignment \\
+%	& \hspace{0.1in} $1=$ no females  \\
+%	& \hspace{0.1in} $2=$ 1 newly pregnant female \\
+%	& \hspace{0.1in} $3=$ 8 newly pregnant females\\
+%	& \hspace{0.1in} $4=$ 1 virgin female\\
+%	& \hspace{0.1in} $5=$ 8 virgin females\\
+%	\texttt{lifespan} & lifespan (days)\\
+%	\texttt{thorax} & length of thorax (mm)\\
+%	\texttt{sleep} & percentage of each day spent sleeping\\
+%\end{tabular}
+%	\vspace{1cm}
+%\begin{enumerate}[label=(\alph*)]
+%	
+%	\item \emph{Import the data set and obtain summary statistiscs and examine the distribution of the overall lifespan of the fruitflies. }
+%	 
+%	 First, let's load in our data and investigate it by using the \texttt{summary()} function, as well as plotting the distribution of lifespan.
+%	 
+%	 \vspace{.15cm}
+%	 \lstinputlisting[language=R, firstline=100, lastline=107]{PS2_answerKey.R}  
+%	 
+%		\begin{verbatim}
+% No          type      lifespan         thorax          sleep      
+% Min.   : 1   Min.   :1   Min.   :16.00   Min.   :0.640   Min.   : 1.00  
+% 1st Qu.: 7   1st Qu.:2   1st Qu.:46.00   1st Qu.:0.760   1st Qu.:13.00  
+% Median :13   Median :3   Median :58.00   Median :0.840   Median :20.00  
+% Mean   :13   Mean   :3   Mean   :57.44   Mean   :0.821   Mean   :23.46  
+% 3rd Qu.:19   3rd Qu.:4   3rd Qu.:70.00   3rd Qu.:0.880   3rd Qu.:29.00  
+% Max.   :25   Max.   :5   Max.   :97.00   Max.   :0.940   Max.   :83.00  
+%		\end{verbatim}
+%		
+%		
+%		\begin{figure}[h!]\centering
+%			\caption{\footnotesize Histogram of \texttt{lifespan}.
+%			}\vspace{-1cm}
+%			\label{fig:plot3_a}
+%			\includegraphics[width=.75\textwidth]{plot3_a.pdf}
+%		\end{figure}
+%			 \vspace{.25cm}
+%
+%	\item	\emph{Plot \texttt{lifespan} vs \texttt{thorax}. Does it look like there is a linear relationship? Provide the plot. What is the correlation coefficient between these two variables?}\\
+%	
+%	 \vspace{.15cm}
+%	Let's create a scatter plot of the relationship between \texttt{thorax} and \texttt{lifespan}. We can see in Figure~\ref{fig:plot3_b} that there appears to be a positive relationship between the two variables, which is confirmed if we investigate the correlation coefficient (using \texttt{cor()}), which is $\approx 0.64$.
+% \vspace{.15cm}
+%\lstinputlisting[language=R, firstline=110, lastline=113]{PS2_answerKey.R}  
+%	
+%\begin{figure}[h!]\centering
+%	\caption{\footnotesize Scatter plot of \texttt{thorax} and \texttt{lifespan}.
+%	}\vspace{-1cm}
+%	\label{fig:plot3_b}
+%	\includegraphics[width=.75\textwidth]{../../../../graphics/plot3_b.pdf}\\
+%\end{figure}
+%
+%\vspace{.25cm}
+%
+%\lstinputlisting[language=R, firstline=115, lastline=116]{PS2_answerKey.R}  
+%
+%		\begin{verbatim}
+%[1] 0.6364835
+%		\end{verbatim}
+%
+%	\item	\emph{Regress \texttt{lifespan} on \texttt{thorax}.  Interpret the slope of the fitted model.}\\
+%	\vspace{.15cm}
+%	
+%	\lstinputlisting[language=R, firstline=118, lastline=121]{PS2_answerKey.R}  
+%		\vspace{.25cm}
+%
+%
+%Using the estimated coefficients and the summary statistics of from the linear regression model, we can calculate the fitted model as $\hat{y} = -61.05 + 144.33x$. The slope of the fitted model is 144.33 and we can interpret the slope as such: when the length of \texttt{thorax} increases by 1 mm, the average lifespan a fruitfly increases by $144.33$ days.
+%
+%	\item	\emph{Test for a significant linear relationship between  \texttt{lifespan} and \texttt{thorax}. Provide and interpret your results of your test.}
+%	
+%	\begin{table}[h!]
+%\centering
+%\caption{Estimated regression coeffiecient from model executed in part (c).}
+%\label{tab:1}
+%\begin{tabular}{rrrrr}
+%  \hline
+% & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+%  \hline
+%(Intercept) & -61.05 & 13.00 & -4.69 & 0.00 \\ 
+%  \texttt{thorax} & 144.33 & 15.77 & 9.15 & 0.00 \\ 
+%   \hline
+%\end{tabular}
+%\end{table}
+%		\vspace{.25cm}
+%For our hypothesis test that the slope $\beta 1=0$ in Table~\ref{tab:1}, the associated test statistic $t = 9.152$ and the $p-value = 1.5e-10$. The p-value is much less than 0.05 (since level of significance $\alpha = 0.05$), so we can reject the null hypothesis $(\beta 1 = 0)$. In other words, there is a statistically differentiable linear relationship from zero between the lifespan of the fruitflies and the length of thorax of the fruitflies. 
+%
+%		\vspace{.25cm}
+%	\item \emph{Provide the 90\% confidence interval for the slope of the fitted model.}
+%	
+%			\vspace{.15cm}
+%	\begin{itemize}
+%		\item
+%			\emph{Use the formula for typical confidence intervals to find the 90\% confidence interval around the point estimate.}	\\
+%			
+%			
+%			Let's use the formula to calculate the confidence interval where $\hat{\beta_{1}} = 144.33$, $t-score = 1.65$ and $se = 15.77$. \\
+%						\vspace{.15cm}
+%			\lstinputlisting[language=R, firstline=123, lastline=132]{PS2_answerKey.R}  
+%			\vspace{.25cm}
+%			
+%			The resulting interval is [118.19, 170.47] around $\hat{\beta}=144.33$.  The confidence interval does not include zero, which is consistent with the hypothesis test we did in the previous question. 
+%			\vspace{.15cm}
+%		\item
+%		\emph{Now, try using the function  \texttt{confint()}  in \texttt{R}.}\\
+%		
+%		Surprise, surprise, we get the same answer!
+%					\vspace{.15cm}
+%					\lstinputlisting[language=R, firstline=134, lastline=135]{PS2_answerKey.R}  
+%					
+%	\end{itemize}
+%			\vspace{6cm}
+%	\item \emph{Use the \texttt{predict()} function in \texttt{R} to (1) predict an individual fruitfly's lifespan when \texttt{thorax}=0.8 and (2) the average \texttt{lifespan} of fruitflies when \texttt{thorax}=0.8 by the fitted model. This requires that you compute prediction and confidence intervals. What are the expected values of lifespan? What are the prediction and confidence intervals around the expected values? }
+%	
+%		\vspace{.15cm}
+%	\lstinputlisting[language=R, firstline=137, lastline=146]{PS2_answerKey.R}  
+%			\vspace{.15cm}
+%First, let's calculate the predicted individual fruitfly lifespan with thorax value of $0.8 mm$. The resulting estimated individual value of lifespan for a fruitfly with $0.8 mm$ length of thorax is $54.41$ days and the corresponding 90\% prediction interval is $[31.78, 77.05]$. The resulting estimated average lifespan for fruitflies with $0.8 mm$ length of thorax is $54.41$ days and the corresponding 90\% confidence interval is $[52.33, 56.50]$. \\
+%
+%Notice that the prediction interval for an estimated individual lifespan is much wider than the confidence interval for an estimated average lifespan. This is just the same as what we would expect since there is more variability in individual responses than in average responses. 
+%		\vspace{.25cm}
+%
+%	\item\emph{	For a sequence of \texttt{thorax} values, draw a plot with their fitted values for \texttt{lifespan}, as well as the prediction intervals and confidence intervals.}
+%	\lstinputlisting[language=R, firstline=148, lastline=165]{PS2_answerKey.R}  
+%
+%\begin{figure}[h!]\centering
+%	\caption{\footnotesize Plot of fitted values, confidence and prediction intervals.
+%	}\vspace{-1cm}
+%	\label{fig:plot3_c}
+%	\includegraphics[width=.85\textwidth]{plot3_g.pdf}\\
+%\end{figure}
+%\end{enumerate}
+\end{document}
