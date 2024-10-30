@@ -67,8 +67,10 @@ c("euftf","edlvdie","eduyrs","hinctnta","trstplt","imwbcnt","gndr","agea","brncn
 sort(names(df))
 sort(unique(df$edlvdis))
 
-df_s <- df[df$cntry=="IE", c("euftf","edlvdie","eduyrs","hinctnta","trstplt","imwbcnt","gndr","agea","brncntr")]
+df_s <- df[df$cntry=="IE", 
+           c("euftf","edlvdie","eduyrs","hinctnta","trstplt","imwbcnt","gndr","agea","brncntr")]
 View(df_s)
+head(df_s)
 
 table(df$eduyrs)
 # 0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21 
@@ -103,10 +105,15 @@ df_s$edu_cat <- factor(df_s$edu_cat,
 levels(df_s$edu_cat)
 typeof(df_s$edu_cat)
 is.factor(df_s$edu_cat)
+table(df_s$edu_cat)
+summary(df_s$edu_cat)
+
 
 # Record missing values
 df_s[(df_s == -67) | (df_s == -78) | (df_s == -89) | (df_s == 77) | (df_s == 88) | (df_s == 99) 
      | (df_s == 5555) | (df_s == 7777) | (df_s == 8888) | (df_s == 9999)] <- NA
+
+summary(df_s)
 
 # Descriptive plots
 vioplot(df_s$euftf_re ~ df_s$edu_cat)
@@ -175,6 +182,20 @@ summary(model_final)
 
 # Get Latex table
 stargazer(model1, model_eco,model_pol, model_cul, model_final)
+
+# text table
+stargazer(model1, model_eco,model_pol, model_cul, model_final, type = "text")
+
+
+# Export Latex table 
+# now save that output to a file that you can read in later to your answers
+# make it easier for when we need to do this again, let's create a function
+output_stargazer <- function(outputFile, ...) {
+  output <- capture.output(stargazer(...))
+  cat(paste(output, collapse = "\n"), "\n", file = outputFile, append = TRUE)
+}
+# execute function and check ls() to make sure it worked
+output_stargazer("model.tex", model1, model_eco,model_pol, model_cul, model_final)
 
 # How to visualize results?
 coefplot(model_final)
