@@ -28,11 +28,11 @@ pkgTest <- function(pkg){
 # lapply(c("stringr"),  pkgTest)
 
 # set wd for current folder
-setwd(Users/rafaelaalves/Desktop/Stats)
+setwd(Users/rafaelaalves/Documents/GitHub/StatsI_Fall2024/problemSets/PS03)
 getwd()
 
 # read in data
-inc.sub <- read.csv("/Users/rafaelaalves/Desktop/Stats/PS3/incumbents_subset.csv")
+inc.sub <- read.csv("/Users/rafaelaalves/Documents/GitHub/StatsI_Fall2024/datasets/incumbents_subset.csv")
 head(inc.sub)
 View(inc.sub)
 class(inc.sub)
@@ -131,6 +131,31 @@ coefficients(model3)
 # ____________________________________________QUESTION 4___________________________________________
 # _________________________________________________________________________________________________
 
+# 1. Run a regression where the outcome variable is the residuals from Question 1 
+# and the explanatory variable is the residuals from Question 2.
+
+# Y outcome = residuals_model1
+# X predictor = residuals_model2
+
+reg_residuals <- lm(residuals_model1 ~ residuals_model2)
+summary(reg_residuals)
+
+
+# 2. Make a scatterplot of the two residuals and add the regression line.
+
+plot(residuals_model2, residuals_model1,
+     xlab = "residuals 2", 
+     ylab = "residuals 1", 
+     main = "Scatterplot of residuals",
+)
+abline(reg_residuals, col = "orange", lwd = 3)
+
+
+# 3. Write the prediction equation.
+coefficients(reg_residuals)
+# residuals_model1 = -5.93 + 2.56 * residuals_model2
+# For each unit increase in the residuals_model2, the residuals_model1 increase by approximately 2.56 units. 
+# The starting point for residuals_model1 is negative, -5.93, when residuals_model2 is zero.
 
 
 
