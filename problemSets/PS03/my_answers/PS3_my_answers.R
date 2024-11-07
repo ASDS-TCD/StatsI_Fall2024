@@ -96,7 +96,7 @@ head(residuals_model2)
 
 # 4. Write the prediction equation.
 coefficients(model2)
-# presvote = 0.50 + 0.023 * difflog
+# presvote = 0.507 + 0.023 * difflog
 # For every one-unit increase in difflog, the predicted presvote increases by approximately 0.023 units.
 # The starting point for presvote when difflog is zero is around 0.507.
 
@@ -158,6 +158,37 @@ coefficients(reg_residuals)
 # The starting point for residuals_model1 is negative, -5.93, when residuals_model2 is zero.
 
 
+
+
+# ____________________________________________QUESTION 5___________________________________________
+# _________________________________________________________________________________________________
+
+# 1. Run a regression where the outcome variable is the incumbent’s voteshare 
+# and the explanatory variables are difflog and presvote.
+
+# Y = voteshare
+# X1 = difflog (campaing spending)
+# X2 = presvote (president’s popularity)
+
+model5 <- lm(voteshare ~ difflog + presvote, data=inc.sub)
+summary(model3)
+
+
+# 2. Write the prediction equation.
+coefficients(model5)
+# voteshare = 0.448 + 0.035 * difflog + 0.256 * presvote
+# For each unit increase in difflog, the voteshare increases by approximately 0.035 units, assuming presvote remains constant. 
+# For each unit increase in presvote, the voteshare increases by approximately 0.256 units, assuming difflog remains constant. 
+# The starting point for voteshare is 0.448 when both, difflog and presvote are zero.
+
+
+# 3. What is it in this output that is identical to the output in Question 4? Why do you think this is the case?
+
+# The coefficients for residuals_model2 (2.568770e-01) and presvote (0.25687701 )
+# The similarity between the coefficients for residuals_model2 (2.568) and presvote (0.256) can be explained by the relationships between the variables and Multicollinearity. 
+# In Question2, we can see that difflog has an influence on presvote: they’re correlated and their coefficients can adjust in the multiple regression in Question5 to represent their contributions. 
+# The similarity of coefficients between residuals_model2 in Question4 and presvote in Question5 suggests that presvote holds substantial explanatory power for voteshare after accounting for difflog.
+# In Summary, the similar coefficients indicates that presvote plays a strong role in predicting voteshare, and when analyzed through residuals in Question4, it highlights its impact independent of difflog.
 
 
 
