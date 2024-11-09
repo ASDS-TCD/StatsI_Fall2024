@@ -37,3 +37,5 @@ This is the first course in the quantitative methods sequence, which introduces 
 - [Course website](https://jeffreyziegler.org/pages/POU7001/454bb65f037965c84ff5ab4e9140df7e4787e69a/)
 - [Course repository](https://github.com/ASDS-TCD/StatsI_Fall2024/)
 
+
+Testing git changes
