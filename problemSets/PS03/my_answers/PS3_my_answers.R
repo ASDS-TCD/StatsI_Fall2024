@@ -4,6 +4,7 @@
 # clear global .envir
 #####################
 
+
 # remove objects
 rm(list=ls())
 # detach all libraries
@@ -28,7 +29,7 @@ pkgTest <- function(pkg){
 # lapply(c("stringr"),  pkgTest)
 
 # set wd for current folder
-setwd(Users/rafaelaalves/Documents/GitHub/StatsI_Fall2024/problemSets/PS03)
+setwd(Users/rafaelaalves/Documents/GitHub/StatsI_Fall2024/problemSets/PS03/my_answers)
 getwd()
 
 # read in data
@@ -47,14 +48,14 @@ summary(model1)
 
 
 # 2. Make a scatterplot of the two variables and add the regression line.
+pdf("plot_question1.pdf")
 plot(inc.sub$difflog, inc.sub$voteshare,
      xlab = "difflog", 
      ylab = "voteshare", 
-     main = "Scatterplot of Vote Share vs. Difflog",
+     main = "voteshare vs. difflog",
 )
 abline(model1, col = "red", lwd = 3)
-
-
+dev.off()
 
 # 3. Save the residuals of the model in a separate object.
 residuals_model1 <- residuals(model1)
@@ -81,13 +82,14 @@ summary(model2)
 
 
 # 2. Make a scatterplot of the two variables and add the regression line.
+pdf("plot_question2.pdf")
 plot(inc.sub$difflog, inc.sub$presvote,
      xlab = "difflog", 
      ylab = "presvote", 
-     main = "Scatterplot of presvote vs. difflog",
+     main = "presvote vs. difflog",
 )
 abline(model2, col = "blue", lwd = 3)
-
+dev.off()
 
 # 3. Save the residuals of the model in a separate object
 residuals_model2 <- residuals(model2)
@@ -112,13 +114,14 @@ summary(model3)
 
 
 # 2. Make a scatterplot of the two variables and add the regression line.
+pdf("plot_question3.pdf")
 plot(inc.sub$presvote, inc.sub$voteshare,
      xlab = "presvote", 
      ylab = "voteshare", 
-     main = "Scatterplot of voteshare vs. presvote",
+     main = "voteshare vs. presvote",
 )
 abline(model3, col = "green", lwd = 3)
-
+dev.off()
 
 # 3. Write the prediction equation.
 coefficients(model3)
@@ -142,14 +145,14 @@ summary(reg_residuals)
 
 
 # 2. Make a scatterplot of the two residuals and add the regression line.
-
+pdf("plot_question4.pdf")
 plot(residuals_model2, residuals_model1,
      xlab = "residuals 2", 
      ylab = "residuals 1", 
-     main = "Scatterplot of residuals",
+     main = "residuals_model1 vs. residuals_model2",
 )
 abline(reg_residuals, col = "orange", lwd = 3)
-
+dev.off()
 
 # 3. Write the prediction equation.
 coefficients(reg_residuals)
@@ -171,7 +174,7 @@ coefficients(reg_residuals)
 # X2 = presvote (president’s popularity)
 
 model5 <- lm(voteshare ~ difflog + presvote, data=inc.sub)
-summary(model3)
+summary(model5)
 
 
 # 2. Write the prediction equation.
@@ -184,11 +187,15 @@ coefficients(model5)
 
 # 3. What is it in this output that is identical to the output in Question 4? Why do you think this is the case?
 
-# The coefficients for residuals_model2 (2.568770e-01) and presvote (0.25687701 )
-# The similarity between the coefficients for residuals_model2 (2.568) and presvote (0.256) can be explained by the relationships between the variables and Multicollinearity. 
-# In Question2, we can see that difflog has an influence on presvote: they’re correlated and their coefficients can adjust in the multiple regression in Question5 to represent their contributions. 
-# The similarity of coefficients between residuals_model2 in Question4 and presvote in Question5 suggests that presvote holds substantial explanatory power for voteshare after accounting for difflog.
-# In Summary, the similar coefficients indicates that presvote plays a strong role in predicting voteshare, and when analyzed through residuals in Question4, it highlights its impact independent of difflog.
 
+# The RESIDUALS in Question 4 are identical to the residuals in Question5. 
+# This can be explained by how the relationships between predictors are involved.
 
+# In the regression in Question 4, we're regressing the residuals from model1 (what remains in voteshare after accounting for difflog) 
+# and model2 (what remains in presvote after accounting for difflog)
+# It checks if there is a relationship between these two residuals, which corresponds to the part of voteshare explained by presvote after controlling for difflog.
 
+# And in Question 5, In REGRESSION 5, we use difflog and presvote as predictors of voteshare. 
+# The residuals in this case are what remains in voteshare after accounting difflog and presvote. 
+
+# Summarizing, both sets of residuals are showing the "unexplained" part of voteshare after accounting the effect of difflog and presvote.
