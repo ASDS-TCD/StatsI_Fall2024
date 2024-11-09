@@ -38,4 +38,3 @@ This is the first course in the quantitative methods sequence, which introduces 
 - [Course repository](https://github.com/ASDS-TCD/StatsI_Fall2024/)
 
 
-Testing git changes
